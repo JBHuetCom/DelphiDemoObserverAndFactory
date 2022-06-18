@@ -1,0 +1,125 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  BorderStyle = Single
+  Caption = 'D'#233'mo Interface'
+  ClientHeight = 306
+  ClientWidth = 430
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object lbl1: TLabel
+    Position.X = 96.000000000000000000
+    Position.Y = 64.000000000000000000
+    Text = '2'#232'me valeur enti'#232're'
+    TabOrder = 0
+  end
+  object lbl2: TLabel
+    Position.X = 96.000000000000000000
+    Position.Y = 16.000000000000000000
+    Text = '1'#232're valeur enti'#232're'
+    TabOrder = 2
+  end
+  object edtVal1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    FilterChar = '0123456789'
+    Text = '0'
+    TextSettings.HorzAlign = Trailing
+    Position.X = 216.000000000000000000
+    Position.Y = 16.000000000000000000
+  end
+  object edtVal2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 3
+    FilterChar = '0123456789'
+    Text = '0'
+    TextSettings.HorzAlign = Trailing
+    Position.X = 216.000000000000000000
+    Position.Y = 64.000000000000000000
+  end
+  object lblResult: TLabel
+    Position.X = 144.000000000000000000
+    Position.Y = 264.000000000000000000
+    Text = 'r'#233'sultat du calcul'
+    TabOrder = 6
+  end
+  object btnAddition: TButton
+    Position.X = 96.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Addition'
+    OnClick = ExecuteAddition
+  end
+  object btnMultiplication: TButton
+    Position.X = 224.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Multiplication'
+    OnClick = ExecuteMultiplication
+  end
+  object swtchMultiplicationType: TSwitch
+    IsChecked = False
+    Position.X = 160.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+  end
+  object lbl3: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 144.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Multiplication par Produit'
+    TabOrder = 11
+  end
+  object lbl4: TLabel
+    Position.X = 240.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 161.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Multiplication par Addition'
+    TabOrder = 12
+  end
+  object swtchSubscription: TSwitch
+    IsChecked = False
+    Position.X = 160.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    OnSwitch = swtchSubscriptionSwitch
+  end
+  object lbl5: TLabel
+    Position.X = 88.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 64.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'D'#233'sabonn'#233
+    TabOrder = 10
+  end
+  object lbl6: TLabel
+    Position.X = 240.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 144.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Abonn'#233
+    TabOrder = 9
+  end
+end
