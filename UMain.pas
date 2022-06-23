@@ -6,7 +6,7 @@ interface
     System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
     FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
     FMX.Edit, FMX.Controls.Presentation,
-    UICalculation, UICalculationResultSubscriber, UTCalculationResultPublisher;
+    UICalculationResultSubscriber, UTCalculationResultPublisher;
 
   type
     TfrmMain = class(TForm, ICalculationResultSubscriber)
@@ -38,9 +38,8 @@ interface
 
 implementation
 
-uses
-  UTCalculationType,
-  UTCalculationFactory;
+  uses
+    UTCalculationType;
 
 {$R *.fmx}
 
@@ -51,6 +50,7 @@ uses
 
   procedure TfrmMain.FormDestroy(Sender: TObject);
     begin
+      FResultPublisher.RemoveSubscriber(Self);
       FResultPublisher.Free;
     end;
 
