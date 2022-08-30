@@ -8,11 +8,11 @@ interface
   type
 
     TCalculationFactoryAbstract = class abstract
-      class function CalculationMethod(CalculationType: TCalculationType): ICalculation; virtual; abstract;
+      class function CalculationMethod(const CalculationType: TCalculationType): ICalculation; virtual; abstract;
     end;
 
     TCalculationFactory = class (TCalculationFactoryAbstract)
-      class function CalculationMethod(CalculationType: TCalculationType): ICalculation; override;
+      class function CalculationMethod(const CalculationType: TCalculationType): ICalculation; override;
     end;
 
 implementation
@@ -20,7 +20,7 @@ implementation
   uses
     UCalculationMethods, System.SysUtils;
 
-  class function TCalculationFactory.CalculationMethod(CalculationType: TCalculationType): ICalculation;
+  class function TCalculationFactory.CalculationMethod(const CalculationType: TCalculationType): ICalculation;
     begin
       case CalculationType of
         cAdd : Result := TAddition.Create;

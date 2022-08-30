@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CB08F158-0E3A-45C4-A841-BB7A366ECC51}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DemoObserverAndFactory.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CalculationWithObserverAndFactoryTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DemoObserverAndFactory">
+        <MSBuild Projects="DemoObserverAndFactory.dproj"/>
+    </Target>
+    <Target Name="DemoObserverAndFactory:Clean">
+        <MSBuild Projects="DemoObserverAndFactory.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoObserverAndFactory:Make">
+        <MSBuild Projects="DemoObserverAndFactory.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CalculationWithObserverAndFactoryTests">
+        <MSBuild Projects="CalculationWithObserverAndFactoryTests.dproj"/>
+    </Target>
+    <Target Name="CalculationWithObserverAndFactoryTests:Clean">
+        <MSBuild Projects="CalculationWithObserverAndFactoryTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CalculationWithObserverAndFactoryTests:Make">
+        <MSBuild Projects="CalculationWithObserverAndFactoryTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DemoObserverAndFactory;CalculationWithObserverAndFactoryTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DemoObserverAndFactory:Clean;CalculationWithObserverAndFactoryTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DemoObserverAndFactory:Make;CalculationWithObserverAndFactoryTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

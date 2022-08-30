@@ -1,6 +1,13 @@
 program DemoObserverAndFactory;
 
 uses
+  {$IFDEF DEBUG}
+  FastMM5 in 'FastMM5.pas',
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,  {$ENDIF}
   System.StartUpCopy,
   FMX.Forms,
   UICalculation in 'UICalculation.pas',
@@ -15,6 +22,11 @@ uses
 {$R *.res}
 
 begin
+
+  {$IFDEF DEBUG}
+  System.ReportMemoryLeaksOnShutdown := True;
+  {$ENDIF}
+
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
