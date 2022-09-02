@@ -27,6 +27,9 @@ type
     [Test]
     [TestCase('Test Multiplication per addition - using TCalculationType value','CMultiPerAdd')]
     procedure CalculationMethodMultiplicationPerAdditionIntegrationTest(const AValue1 : TCalculationType);
+
+  private
+    FActual, FExpected: ICalculation;
   end;
 
 implementation
@@ -42,36 +45,28 @@ implementation
     begin
     end;
 
-  procedure TCalculationFactoryTest.CalculationMethodMultiplicationPerAdditionIntegrationTest(
-  const AValue1: TCalculationType);
-    var
-      actual, expected: ICalculation;
+
+  procedure TCalculationFactoryTest.CalculationMethodAdditionIntergrationTest(const AValue1 : TCalculationType);
     begin
-      actual := TCalculationFactory.CalculationMethod(AValue1);
-      expected := TMultiplicationPerAddition.Create;
-      // As actual and expected are Interfaces, integration test only is possible here
-      Assert.AreEqual(actual.Calculation(10,10), expected.Calculation(10,10));
+      FActual := TCalculationFactory.CalculationMethod(AValue1);
+      FExpected := TAddition.Create;
+      Assert.AreEqual(FActual.Calculation(10,10), FExpected.Calculation(10,10));
     end;
 
   procedure TCalculationFactoryTest.CalculationMethodMultiplicationIntegrationTest(
     const AValue1: TCalculationType);
-    var
-      actual, expected: ICalculation;
     begin
-      actual := TCalculationFactory.CalculationMethod(AValue1);
-      expected := TMultiplication.Create;
-      // As actual and expected are Interfaces, integration test only is possible here
-      Assert.AreEqual(actual.Calculation(10,10), expected.Calculation(10,10));
+      FActual := TCalculationFactory.CalculationMethod(AValue1);
+      FExpected := TMultiplication.Create;
+      Assert.AreEqual(FActual.Calculation(10,10), FExpected.Calculation(10,10));
     end;
 
-  procedure TCalculationFactoryTest.CalculationMethodAdditionIntergrationTest(const AValue1 : TCalculationType);
-    var
-      actual, expected: ICalculation;
+  procedure TCalculationFactoryTest.CalculationMethodMultiplicationPerAdditionIntegrationTest(
+  const AValue1: TCalculationType);
     begin
-      actual := TCalculationFactory.CalculationMethod(AValue1);
-      expected := TAddition.Create;
-      // As actual and expected are Interfaces, integration test only is possible here
-      Assert.AreEqual(actual.Calculation(10,10), expected.Calculation(10,10));
+      FActual := TCalculationFactory.CalculationMethod(AValue1);
+      FExpected := TMultiplicationPerAddition.Create;
+      Assert.AreEqual(FActual.Calculation(10,10), FExpected.Calculation(10,10));
     end;
 
   initialization

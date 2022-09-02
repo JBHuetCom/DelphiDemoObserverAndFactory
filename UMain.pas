@@ -30,7 +30,7 @@ interface
       procedure swtchSubscriptionSwitch(Sender: TObject);
     private
       FResultPublisher : TCalculationPublisherManager;
-      procedure Update(aResult: Integer);
+      procedure Update(aResult : Int64);
     end;
 
   var
@@ -77,7 +77,7 @@ implementation
         FResultPublisher.RemoveSubscriber(Self);
     end;
 
-procedure TfrmMain.Update(aResult: Integer);
+procedure TfrmMain.Update(aResult: Int64);
     begin
       lblResult.Text := aResult.ToString;
     end;

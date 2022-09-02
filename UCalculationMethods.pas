@@ -8,43 +8,53 @@ uses
 type
 
   TCalculationMethod = class abstract (TInterfacedObject, ICalculation)
-    function Calculation(const a, b: Integer): Integer; virtual; abstract;
+    function Calculation(const a, b: Integer): Int64; virtual; abstract;
   end;
 
   TAddition = class sealed (TCalculationMethod)
-    function Calculation(const a1, a2: Integer): Integer; override; final;
+    function Calculation(const a1, a2: Integer): Int64; override; final;
   end;
 
   type
   TMultiplication = class sealed (TCalculationMethod)
-    function Calculation(const m1, m2: Integer): Integer; override; final;
+    function Calculation(const m1, m2: Integer): Int64; override; final;
   end;
 
   type
   TMultiplicationPerAddition = class sealed (TCalculationMethod)
-    function Calculation(const i1, i2: Integer): Integer; override; final;
+    function Calculation(const i1, i2: Integer): Int64; override; final;
   end;
 
 implementation
 
-function TAddition.Calculation(const a1, a2: Integer): Integer;
+  uses
+    System.SysUtils;
+
+function TAddition.Calculation(const a1, a2: Integer): Int64;
   begin
-    Result := a1 + a2;
+    Result := Int64(a1) + Int64(a2);
   end;
 
-  function TMultiplication.Calculation(const m1, m2: Integer): Integer;
+  function TMultiplication.Calculation(const m1, m2: Integer): Int64;
   begin
-    Result := m1 * m2;
+    Result := Int64(m1) * Int64(m2);
   end;
 
-  function TMultiplicationPerAddition.Calculation(const i1, i2: Integer): Integer;
+  function TMultiplicationPerAddition.Calculation(const i1, i2: Integer): Int64;
+    var
+      Counter : Integer;
   begin
-    // ToDo: manage negative values
-    Result := 0;
-    for var i: Integer := 1 to i1 do
+    if (i1 <> 0) and (i2 <> 0) then
       begin
-        Result := Result + i2;
-      end;
+        Counter := Abs(i2) - 1;
+        Result := 0;
+        for var i := 0 to Counter do
+          Result := Result + Int64(i1);
+        if i2 < 0 then
+          Result := Result * -1;
+      end
+    else
+      Result := 0;
   end;
 
 end.

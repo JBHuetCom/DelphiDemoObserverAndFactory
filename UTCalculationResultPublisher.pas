@@ -13,7 +13,7 @@ interface
     private
       FSubscribersList : TList<ICalculationResultSubscriber>;
     public
-      constructor Create;
+      constructor Create; overload;
       destructor Destroy; override;
       procedure RegisterSubscriber(aSubscriber: ICalculationResultSubscriber);
       procedure RemoveSubscriber(aSubscriber: ICalculationResultSubscriber);
@@ -40,7 +40,7 @@ implementation
   procedure TCalculationPublisherManager.NotifySubscribers(aCalculation : TCalculationType; a, b : Integer);
     var
       Subscriber : ICalculationResultSubscriber;
-      CalculationResult : Integer;
+      CalculationResult : Int64;
     begin
       if FSubscribersList.Count > 0 then
         begin
